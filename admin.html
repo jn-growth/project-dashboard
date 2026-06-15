@@ -154,19 +154,6 @@
     .task-date { font-size: 11px; color: var(--muted); white-space: nowrap; }
 
     /* === Week Tabs === */
-    .week-tabs { display: flex; gap: 4px; margin-bottom: 16px; background: var(--border-light); border-radius: var(--radius-sm); padding: 3px; }
-    .week-tab {
-      flex: 1; padding: 8px 12px; border: none; border-radius: 6px;
-      font-size: 13px; font-weight: 500; cursor: pointer; font-family: inherit;
-      background: transparent; color: var(--ink-secondary); transition: all 0.2s;
-    }
-    .week-tab.active { background: var(--card); color: var(--ink); box-shadow: var(--shadow); }
-    .week-tab:hover:not(.active) { color: var(--ink); }
-    .week-panel { display: none; }
-    .week-panel.active { display: block; }
-    .week-goal { font-size: 13px; color: var(--ink-secondary); margin-bottom: 12px; padding: 10px 14px; background: var(--border-light); border-radius: 6px; }
-    .week-empty { text-align: center; padding: 32px; color: var(--muted); font-size: 13px; }
-
     /* === Deliverable Grid === */
     .deliverable-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .deliverable-card {
@@ -316,15 +303,6 @@
       <div class="section-title">项目路线图 - 任务状态</div>
     </div>
     <div id="phasesContainer"></div>
-  </div>
-
-  <!-- Week Plans Section -->
-  <div class="section" id="plansSection" style="display:none;">
-    <div class="section-header">
-      <div class="section-title">周计划 - 任务状态</div>
-    </div>
-    <div class="week-tabs" id="weekTabs"></div>
-    <div id="weekPanels"></div>
   </div>
 
   <!-- Deliverables Section -->
@@ -554,10 +532,8 @@ function updateSaveBar() {
 // ============================================================
 function renderAll() {
   renderPhases();
-  renderWeekPlans();
   renderDeliverables();
   document.getElementById('phasesSection').style.display = '';
-  document.getElementById('plansSection').style.display = '';
   document.getElementById('deliverablesSection').style.display = '';
 }
 
@@ -597,42 +573,6 @@ function renderPhases() {
   container.innerHTML = html;
 }
 
-function renderWeekPlans() {
-  var tabsEl = document.getElementById('weekTabs');
-  var panelsEl = document.getElementById('weekPanels');
-  var tabsHtml = '';
-  var panelsHtml = '';
-
-  projectData.plans.forEach(function(plan, wi) {
-    var activeClass = wi === 0 ? ' active' : '';
-    tabsHtml += '<button class="week-tab' + activeClass + '" onclick="switchWeek(' + wi + ')">' + plan.label + '</button>';
-
-    panelsHtml += '<div class="week-panel' + activeClass + '" id="weekPanel-' + wi + '">';
-    if (plan.goal) {
-      panelsHtml += '<div class="week-goal">' + plan.goal + '</div>';
-    }
-    if (plan.tasks.length === 0) {
-      panelsHtml += '<div class="week-empty">暂无任务安排</div>';
-    } else {
-      panelsHtml += '<ul class="task-list">';
-      plan.tasks.forEach(function(task, ti) {
-        var isOn = task.status === 'on';
-        panelsHtml += '<li class="task-item">';
-        panelsHtml += '<div class="task-checkbox' + (isOn ? ' on' : '') + '" data-week="' + wi + '" data-task="' + ti + '" onclick="toggleWeekTask(' + wi + ',' + ti + ')">';
-        panelsHtml += '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>';
-        panelsHtml += '</div>';
-        panelsHtml += '<span class="task-name' + (isOn ? ' done' : '') + '">' + task.name + '</span>';
-        panelsHtml += '</li>';
-      });
-      panelsHtml += '</ul>';
-    }
-    panelsHtml += '</div>';
-  });
-
-  tabsEl.innerHTML = tabsHtml;
-  panelsEl.innerHTML = panelsHtml;
-}
-
 function renderDeliverables() {
   var grid = document.getElementById('deliverablesGrid');
   var html = '';
@@ -669,12 +609,6 @@ function togglePhaseTask(pi, ti) {
   renderPhases();
 }
 
-function toggleWeekTask(wi, ti) {
-  projectData.plans[wi].tasks[ti].status = projectData.plans[wi].tasks[ti].status === 'on' ? 'off' : 'on';
-  markChanged();
-  renderWeekPlans();
-}
-
 function toggleDeliverable(di) {
   projectData.deliverables[di].delivered = projectData.deliverables[di].delivered === 'on' ? 'off' : 'on';
   markChanged();
@@ -684,15 +618,6 @@ function toggleDeliverable(di) {
 function updateDeliverableLink(di, value) {
   projectData.deliverables[di].link = value;
   markChanged();
-}
-
-function switchWeek(wi) {
-  document.querySelectorAll('.week-tab').forEach(function(t, i) {
-    t.classList.toggle('active', i === wi);
-  });
-  document.querySelectorAll('.week-panel').forEach(function(p, i) {
-    p.classList.toggle('active', i === wi);
-  });
 }
 
 // ============================================================
