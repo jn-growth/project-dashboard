@@ -445,6 +445,26 @@ function githubApi(path, method, body) {
   });
 }
 
+// UTF-8 safe Base64 decode
+function utf8Base64Decode(base64) {
+  var binary = atob(base64.replace(/\s/g, ''));
+  var bytes = new Uint8Array(binary.length);
+  for (var i = 0; i < binary.length; i++) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+  return new TextDecoder('utf-8').decode(bytes);
+}
+
+// UTF-8 safe Base64 encode
+function utf8Base64Encode(str) {
+  var bytes = new TextEncoder().encode(str);
+  var binary = '';
+  for (var i = 0; i < bytes.length; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return btoa(binary);
+}
+
 async function connectGitHub() {
   saveConfig();
   if (!githubConfig.token || !githubConfig.owner || !githubConfig.repo) {
@@ -455,7 +475,7 @@ async function connectGitHub() {
   document.getElementById('configStatus').textContent = '连接中...';
   try {
     var res = await githubApi('/contents/data.json', 'GET');
-    var content = atob(res.content);
+    var content = utf8Base64Decode(res.content);
     githubConfig.sha = res.sha;
     projectData = JSON.parse(content);
     originalData = JSON.parse(JSON.stringify(projectData));
@@ -476,7 +496,7 @@ async function saveToGitHub() {
   saveConfig();
   showLoading(true);
   try {
-    var content = btoa(unescape(encodeURIComponent(JSON.stringify(projectData, null, 2))));
+    var content = utf8Base64Encode(JSON.stringify(projectData, null, 2));
     await githubApi('/contents/data.json', 'PUT', {
       message: 'update: 项目进度数据更新 (' + new Date().toLocaleString('zh-CN') + ')',
       content: content,
