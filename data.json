@@ -1,0 +1,119 @@
+{
+  "info": {
+    "name": "捷牧教育官网建设项目",
+    "description": "建设捷牧教育官方网站，打造国际化、高端化品牌形象，提升用户咨询转化率，兼顾 SEO 搜索优化及 AI 搜索（GEO）优化需求。",
+    "status": "进行中",
+    "startDate": "2026-06-15",
+    "endDate": "2026-07-15"
+  },
+  "phases": [
+    {
+      "name": "需求梳理与网站策划",
+      "status": "active",
+      "start": "06-15",
+      "end": "06-21",
+      "desc": "项目资料梳理、网站架构规划、页面规划、SEO/GEO 架构设计、首页原型设计",
+      "tasks": [
+        { "name": "项目资料梳理（品牌/服务/案例/院校）", "status": "off", "date": "6.15-6.16" },
+        { "name": "网站架构规划（定位/路径/栏目/功能）", "status": "off", "date": "6.16-6.17" },
+        { "name": "页面规划（首页/服务页/案例页/内容中心）", "status": "off", "date": "6.17-6.18" },
+        { "name": "SEO 与 GEO 架构设计", "status": "off", "date": "6.18-6.19" },
+        { "name": "首页原型设计", "status": "off", "date": "6.20-6.21" }
+      ]
+    },
+    {
+      "name": "原型设计与UI设计",
+      "status": "pending",
+      "start": "06-22",
+      "end": "06-28",
+      "desc": "全站页面原型设计、UI 视觉设计、品牌视觉规范、响应式设计",
+      "tasks": [
+        { "name": "全站页面原型设计", "status": "off", "date": "6.22-6.24" },
+        { "name": "UI 视觉设计（品牌规范+页面设计）", "status": "off", "date": "6.24-6.28" }
+      ]
+    },
+    {
+      "name": "前端开发与后台开发",
+      "status": "pending",
+      "start": "06-29",
+      "end": "07-05",
+      "desc": "前端页面开发、响应式适配、动效开发、后台管理系统建设",
+      "tasks": [
+        { "name": "前端开发 + 响应式适配", "status": "off", "date": "6.29-7.3" },
+        { "name": "后台管理系统建设", "status": "off", "date": "6.29-7.3" }
+      ]
+    },
+    {
+      "name": "内容填充与测试上线",
+      "status": "pending",
+      "start": "07-06",
+      "end": "07-15",
+      "desc": "内容填充、SEO/GEO 部署、测试验收、服务器部署、正式上线",
+      "tasks": [
+        { "name": "内容填充 + SEO/GEO 部署", "status": "off", "date": "7.4-7.8" },
+        { "name": "测试验收 + 速度/安全优化", "status": "off", "date": "7.9-7.12" },
+        { "name": "服务器部署 + 域名解析 + 正式上线", "status": "off", "date": "7.13-7.15" }
+      ]
+    }
+  ],
+  "plans": [
+    {
+      "id": "week1",
+      "label": "第1周",
+      "goal": "完成网站整体策划与产品设计阶段工作，为后续 UI 设计及开发奠定基础。",
+      "tasks": [
+        { "name": "品牌资料整理", "status": "off" },
+        { "name": "服务体系梳理", "status": "off" },
+        { "name": "成功案例整理", "status": "off" },
+        { "name": "院校资源整理", "status": "off" },
+        { "name": "竞争对手分析", "status": "off" },
+        { "name": "网站定位分析", "status": "off" },
+        { "name": "用户路径设计", "status": "off" },
+        { "name": "网站栏目规划", "status": "off" },
+        { "name": "网站功能规划", "status": "off" },
+        { "name": "首页规划", "status": "off" },
+        { "name": "服务页规划", "status": "off" },
+        { "name": "案例页规划", "status": "off" },
+        { "name": "内容中心规划", "status": "off" },
+        { "name": "SEO 关键词布局", "status": "off" },
+        { "name": "FAQ 知识库设计", "status": "off" },
+        { "name": "GEO 结构规划", "status": "off" },
+        { "name": "首页模块规划", "status": "off" },
+        { "name": "页面布局设计", "status": "off" },
+        { "name": "转化路径设计", "status": "off" }
+      ]
+    },
+    {
+      "id": "week2",
+      "label": "第2周",
+      "goal": "完成全站原型设计与 UI 视觉设计，输出高保真设计稿。",
+      "tasks": []
+    },
+    {
+      "id": "week3",
+      "label": "第3周",
+      "goal": "完成前端开发与后台管理系统建设。",
+      "tasks": []
+    },
+    {
+      "id": "week4",
+      "label": "第4周",
+      "goal": "完成内容填充、SEO/GEO 部署、测试验收与正式上线。",
+      "tasks": []
+    }
+  ],
+  "deliverables": [
+    { "title": "网站整体架构图", "desc": "网站页面层级结构与导航体系设计", "delivered": "off", "expectedDate": "6.17", "link": "" },
+    { "title": "页面规划文档", "desc": "各页面功能模块与内容规划说明", "delivered": "off", "expectedDate": "6.18", "link": "" },
+    { "title": "SEO/GEO 规划方案", "desc": "搜索引擎优化与 AI 搜索优化策略方案", "delivered": "off", "expectedDate": "6.19", "link": "" },
+    { "title": "首页原型图", "desc": "首页交互原型设计初稿", "delivered": "off", "expectedDate": "6.21", "link": "" },
+    { "title": "全站原型图", "desc": "所有页面的交互原型设计", "delivered": "off", "expectedDate": "6.24", "link": "" },
+    { "title": "UI 设计稿", "desc": "全站高保真 UI 视觉设计稿", "delivered": "off", "expectedDate": "6.28", "link": "" },
+    { "title": "品牌视觉规范", "desc": "配色、字体、组件库等品牌设计标准", "delivered": "off", "expectedDate": "6.28", "link": "" },
+    { "title": "前端开发包", "desc": "前端页面代码与资源文件", "delivered": "off", "expectedDate": "7.3", "link": "" },
+    { "title": "后台管理系统", "desc": "CMS 内容管理后台系统", "delivered": "off", "expectedDate": "7.3", "link": "" },
+    { "title": "测试报告", "desc": "功能测试、兼容性测试、性能测试报告", "delivered": "off", "expectedDate": "7.10", "link": "" },
+    { "title": "SEO/GEO 部署报告", "desc": "搜索引擎优化与 AI 搜索优化部署情况", "delivered": "off", "expectedDate": "7.10", "link": "" },
+    { "title": "上线验收报告", "desc": "项目最终上线验收文档", "delivered": "off", "expectedDate": "7.15", "link": "" }
+  ]
+}
