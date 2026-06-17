@@ -21,7 +21,7 @@
         },
         {
           "name": "网站架构规划（定位/路径/栏目/功能）",
-          "status": "off",
+          "status": "on",
           "date": "6.16-6.17"
         },
         {
@@ -211,9 +211,9 @@
     {
       "title": "网站整体架构图",
       "desc": "网站页面层级结构与导航体系设计",
-      "delivered": "off",
+      "delivered": "on",
       "expectedDate": "6.17",
-      "link": ""
+      "link": "https://jn-growth.github.io/project-dashboard/site-architecture.html"
     },
     {
       "title": "页面规划文档",
