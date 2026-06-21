@@ -193,7 +193,7 @@
       "label": "第2周",
       "goal": "完成全站原型设计与 UI 视觉设计，输出高保真设计稿。",
       "tasks": [
-           {
+        {
           "name": "首页结构调整、导航及规划文档同步",
           "status": "off"
         },
@@ -257,9 +257,9 @@
     {
       "title": "首页原型图",
       "desc": "首页交互原型设计初稿",
-      "delivered": "off",
+      "delivered": "on",
       "expectedDate": "6.21",
-      "link": ""
+      "link": "https://jn-growth.github.io/project-dashboard/homepage.png"
     },
     {
       "title": "全站原型图",
