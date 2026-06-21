@@ -364,7 +364,8 @@ mark.key { background: none; color: var(--accent); font-weight: 600; }
     <p class="subtitle">JM Bildung Website Page Planning Document</p>
     <div class="meta">
       <div class="meta-item"><strong>编制日期</strong> 2026-06-17</div>
-      <div class="meta-item"><strong>版本</strong> v1.0</div>
+      <div class="meta-item"><strong>更新日期</strong> 2026-06-22</div>
+      <div class="meta-item"><strong>版本</strong> v1.1</div>
       <div class="meta-item"><strong>参考文档</strong> site-architecture.md / 捷牧教育官网建设内容表单.md / 德国捷牧双元制职业培训招生简章.md / 捷牧教育集团企业介绍.md</div>
     </div>
   </div>
@@ -409,13 +410,16 @@ mark.key { background: none; color: var(--accent); font-weight: 600; }
 
       <!-- Hero Banner -->
       <div class="module-block">
-        <h4>Hero Banner（主视觉横幅）</h4>
-        <p class="module-desc">首页首屏核心展示区域，传达品牌定位与核心价值主张，引导用户进入核心业务页面。</p>
+        <h4>Hero Banner（全屏主视觉）</h4>
+        <p class="module-desc">采用接近一屏高度的真实德国办公场景图片，以集团品牌定位与德国职业教育价值主张建立第一印象。</p>
         <ul class="content-list">
           <li>品牌标语："中德教育的纽带" <span class="source-tag">内容表单 - 品牌定位</span></li>
-          <li>主标题文案方向：聚焦双元制"带薪学习+就业保障"核心卖点 <span class="source-tag">内容表单 - 竞品差异化</span></li>
-          <li>副标题/描述：捷牧教育深耕中德教育领域17年，年均输送学员300+，就业率超90% <span class="source-tag">招生简章 - 项目介绍</span></li>
-          <li>CTA按钮：跳转至 <code>/dual-study/</code>（捷牧双元制）和 <code>/contact/</code>（在线咨询）</li>
+          <li>主标题：<strong>德国职业教育，让学历与就业同步发生</strong></li>
+          <li>说明文案：强调17年德国本土教育经验，以及院校、企业和职业发展路径的连接能力</li>
+          <li>主 CTA："了解德国双元制" → <code>/dual-study/</code></li>
+          <li>次 CTA："免费获取规划方案" → <code>/contact/</code></li>
+          <li>默认使用不出现历史品牌标识的德国办公室环境图；含 GEM 标识的旧素材不得作为当前品牌首屏</li>
+          <li>Hero 文案、按钮、链接和图片均通过“外观 → 捷牧主题设置”维护</li>
         </ul>
         <div class="source-quote">
           <div class="source-label">引用来源：内容表单 - 品牌定位</div>
@@ -426,15 +430,16 @@ mark.key { background: none; color: var(--accent); font-weight: 600; }
       <!-- 核心数据条 -->
       <div class="module-block">
         <h4>核心数据条（品牌实力展示）</h4>
-        <p class="module-desc">以数字化的方式直观展示企业规模与服务成果，建立品牌信任。</p>
+        <p class="module-desc">首屏下方使用无厚重卡片的六列数据条，直观展示企业规模与服务成果；平板三列、移动端两列。</p>
         <ul class="content-list">
-          <li>成立年份：<strong>2008年</strong>（深耕17年）<span class="source-tag">内容表单 - 企业简介</span></li>
+          <li>成立年份：<strong>2008年</strong> <span class="source-tag">内容表单 - 企业简介</span></li>
           <li>服务学员：<strong>11,000+</strong> <span class="source-tag">内容表单 - 企业简介</span></li>
           <li>合作企业：<strong>500+</strong> <span class="source-tag">内容表单 - 双元制服务内容</span></li>
           <li>团队规模：<strong>200+</strong> <span class="source-tag">内容表单 - 企业简介</span></li>
           <li>就业率：<strong>90%+</strong> <span class="source-tag">内容表单 - 双元制服务内容</span></li>
           <li>职业方向：<strong>60+</strong> <span class="source-tag">内容表单 - 双元制服务内容</span></li>
-          <li>办事处：<strong>5家</strong>（德国+中国）<span class="source-tag">内容表单 - 企业简介</span></li>
+          <li>办事处5家不在数据条重复展示，放入“关于捷牧教育”模块作为辅助信息</li>
+          <li>全部数据通过主题设置维护；就业率统计口径仍属于待客户确认项</li>
         </ul>
         <div class="source-quote">
           <div class="source-label">引用来源：内容表单 - 企业简介</div>
@@ -442,47 +447,84 @@ mark.key { background: none; color: var(--accent); font-weight: 600; }
         </div>
       </div>
 
-      <!-- 业务入口 -->
+      <!-- 为什么选择捷牧教育 -->
       <div class="module-block">
-        <h4>业务入口卡片（核心服务导航）</h4>
-        <p class="module-desc">以卡片形式展示五大核心业务线，每张卡片包含图标、标题、简介及跳转链接。</p>
+        <h4>为什么选择捷牧教育</h4>
+        <p class="module-desc">当前首页不采用五大业务入口卡片，改为四项横向优势展示，减少传统留学中介式信息堆叠。</p>
         <ul class="content-list">
-          <li><strong>捷牧双元制</strong>：德国双元制职业培训，带薪学习+就业保障，年均输送学员300+，就业率超90% <span class="source-tag">内容表单 - 双元制服务内容</span> → <code>/dual-study/</code></li>
-          <li><strong>就业德语</strong>：全国首家就业德语，定制化课程，零基础可学，中外名师联合教学 <span class="source-tag">内容表单 - 服务优势（零基础可学）</span> → <code>/german-course/</code></li>
-          <li><strong>留德项目</strong>：包含德国高中联盟、大学预科、游学研学、中德合作办学 <span class="source-tag">内容表单 - 业务介绍资料</span> → <code>/high-school/</code> 等</li>
-          <li><strong>旗下院校</strong>：莱茵公益教育中心（GRB）、莱茵护理与健康学院（RAPG）、杜塞尔多夫预科学院（STK）<span class="source-tag">内容表单 - 企业简介</span> → <code>/institutions/</code></li>
-          <li><strong>学员案例</strong>：12位优秀学员真实案例，涵盖双元制各行业方向 <span class="source-tag">内容表单 - 学员案例资料</span> → <code>/success-stories/</code></li>
+          <li><strong>德国本土团队</strong>：本土教职、服务与申请团队协同支持</li>
+          <li><strong>德国院校资源</strong>：连接德国职业教育与升学资源</li>
+          <li><strong>德国企业资源</strong>：500+企业合作与60+职业方向</li>
+          <li><strong>德国政府合作</strong>：与多地官方机构及经促局开展合作</li>
+          <li>视觉采用编号、线性图形和开放式分栏，不使用密集小卡片</li>
+          <li>模块简介及四项内容通过主题设置维护</li>
         </ul>
       </div>
 
-      <!-- 学员评价 -->
+      <!-- 关于捷牧教育 -->
       <div class="module-block">
-        <h4>学员评价（社会证明模块）</h4>
-        <p class="module-desc">轮播或随机展示学员真实评价，增强可信度与转化动力。</p>
+        <h4>关于捷牧教育</h4>
+        <p class="module-desc">使用真实团队大图与集团简介建立德国本土团队和品牌规模认知。</p>
         <ul class="content-list">
-          <li>精选3-5条学员评价，每条包含姓名、岗位、城市、评价语 <span class="source-tag">内容表单 - 学员案例资料（12位学员）</span></li>
-          <li>示例：弋同学（西餐厨师，奥斯纳布吕克）："最初接触到双元制项目是非常害怕和犹豫的...如今，我们一家人马上就要在德国团聚！" <span class="source-tag">内容表单 - 学员案例1</span></li>
-          <li>示例：祝同学（酒店管理，柏林）："远离国内的高压职场...没了通宵加班，胃病腰疾都好了" <span class="source-tag">内容表单 - 学员案例6</span></li>
+          <li>标题：<strong>17年专注中德教育合作</strong></li>
+          <li>简介：说明德国捷牧教育集团（JM Bildung）成立于2008年及其中德教育资源连接定位</li>
+          <li>辅助数据：11,000+学员服务经验、5家中德办事处</li>
+          <li>CTA："了解捷牧教育集团" → <code>/about/</code></li>
+          <li>标题、正文、链接与图片通过主题设置维护</li>
         </ul>
       </div>
 
-      <!-- 合作企业Logo墙 -->
+      <!-- 德国双元制核心项目 -->
       <div class="module-block">
-        <h4>合作企业 Logo 墙</h4>
-        <p class="module-desc">展示合作企业Logo，建立品牌背书。</p>
+        <h4>德国双元制核心项目</h4>
+        <p class="module-desc">采用大图与核心事实面板突出双元制，不做成普通项目入口卡片。</p>
         <ul class="content-list">
-          <li>展示500+合作企业中的代表性企业Logo <span class="source-tag">内容表单 - 合作院校/企业</span></li>
-          <li>标题文案："与500+德国本土企业达成深度合作，覆盖60+专业领域" <span class="source-tag">招生简章 - 合作企业名录</span></li>
+          <li>标题：<strong>德国双元制职业培训</strong></li>
+          <li>说明：在职业学校学习专业理论，同时在德国企业参与真实工作</li>
+          <li>核心事实：700–1200欧元/月、2–3.5年、约95%毕业后转正相关口径、IHK/HWK职业资格证书全欧盟认可</li>
+          <li>CTA："了解双元制项目" → <code>/dual-study/</code></li>
+          <li>模块文字、数据、链接与图片通过主题设置维护</li>
+          <li>90%+就业率与约95%转正率的适用范围需继续保留为待客户确认项</li>
+        </ul>
+      </div>
+
+      <!-- 学员案例 -->
+      <div class="module-block">
+        <h4>学员案例</h4>
+        <p class="module-desc">深色大区块展示三条学员故事，强化真实感与社会证明；当前阶段不使用自动轮播。</p>
+        <ul class="content-list">
+          <li>首页读取后台最新发布的3条“学员案例”内容</li>
+          <li>每条包含授权照片、匿名化姓名、岗位、城市和摘要，并链接至案例详情</li>
+          <li>后台暂无案例时显示资料中的弋同学、曹同学、祝同学匿名化摘要</li>
+          <li>未获得照片授权时使用本地中性占位图并显示“人物图片待客户授权”</li>
+          <li>查看全部案例 → <code>/success-stories/</code></li>
+        </ul>
+      </div>
+
+      <div class="module-block">
+        <h4>德国合作网络</h4>
+        <p class="module-desc">使用德国地图、城市节点和连接线表达德国本土资源网络，避免在授权名单确认前擅自展示企业背书。</p>
+        <ul class="content-list">
+          <li>标题：<strong>覆盖全德的合作网络</strong></li>
+          <li>核心数据：500+合作企业、60+职业方向</li>
+          <li>地图示意节点：Berlin、Osnabrück、Düsseldorf、München、Stuttgart</li>
+          <li>仅当后台“合作伙伴”中主动发布内容后，才显示对应名称或Logo</li>
+          <li>合作Logo默认灰度展示，悬停恢复原色</li>
+          <li>查看合作网络 → <code>/partners/</code></li>
+          <li>模块标题和说明通过主题设置维护</li>
         </ul>
       </div>
 
       <!-- 最新资讯 -->
       <div class="module-block">
         <h4>最新资讯</h4>
-        <p class="module-desc">展示3-4条最新公司动态或行业新闻，引导用户进入资讯栏目。</p>
+        <p class="module-desc">在合作网络之后展示最新发布的内容，保持官网信息更新能力，并引导用户进入资讯栏目。</p>
         <ul class="content-list">
-          <li>文章列表：标题、摘要、发布时间、缩略图 <span class="source-tag">架构规划 - 捷牧动态/捷牧要闻</span></li>
-          <li>更多链接：跳转至 <code>/news/</code> 和 <code>/highlights/</code></li>
+          <li>首页读取 WordPress 最新发布的3篇文章</li>
+          <li>每条包含封面图、发布日期、标题、摘要和详情入口</li>
+          <li>未设置特色图片时显示本地品牌文字占位，不调用远程图片</li>
+          <li>暂无已发布文章时显示“最新资讯正在整理”的明确状态，不伪造新闻内容</li>
+          <li>查看全部资讯 → <code>/news/</code></li>
         </ul>
       </div>
 
@@ -491,10 +533,20 @@ mark.key { background: none; color: var(--accent); font-weight: 600; }
         <h4>底部 CTA（行动号召）</h4>
         <p class="module-desc">页面底部强转化区域，引导用户进行咨询。</p>
         <ul class="content-list">
-          <li>文案方向："开启你的德国职业之路" / "免费获取双元制申请方案"</li>
-          <li>CTA按钮：在线咨询（跳转 <code>/contact/</code>）</li>
-          <li>辅助信息：联系电话 +86-13520410418（北京）<span class="source-tag">内容表单 - 联系电话</span></li>
+          <li>标题：<strong>开启你的德国职业之路</strong></li>
+          <li>说明："获取专属德国发展方案，由专业顾问提供一对一评估。"</li>
+          <li>CTA按钮："立即咨询" → <code>/contact/</code></li>
+          <li>CTA操作区只保留按钮，不显示联系电话或其他辅助信息</li>
+          <li>文案和链接通过主题设置维护</li>
         </ul>
+      </div>
+
+      <div class="module-block">
+        <h4>首页当前模块顺序</h4>
+        <ol class="content-list">
+          <li>Header</li><li>全屏 Hero</li><li>品牌核心数据</li><li>为什么选择捷牧教育</li><li>关于捷牧教育</li><li>德国双元制核心项目</li><li>学员案例</li><li>德国合作网络</li><li>最新资讯</li><li>最终咨询 CTA</li><li>Footer</li>
+        </ol>
+        <div class="source-quote">“业务入口卡片”不属于当前首页结构，保留到后续内页导航阶段再评估，不在首页重复堆叠。</div>
       </div>
     </div>
   </div>
