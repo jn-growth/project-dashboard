@@ -26,17 +26,17 @@
         },
         {
           "name": "页面规划（首页/服务页/案例页/内容中心）",
-          "status": "off",
+          "status": "on",
           "date": "6.17-6.18"
         },
         {
           "name": "SEO 与 GEO 架构设计",
-          "status": "off",
+          "status": "on",
           "date": "6.18-6.19"
         },
         {
           "name": "首页原型设计",
-          "status": "off",
+          "status": "on",
           "date": "6.20-6.21"
         }
       ]
@@ -218,16 +218,16 @@
     {
       "title": "页面规划文档",
       "desc": "各页面功能模块与内容规划说明",
-      "delivered": "off",
+      "delivered": "on",
       "expectedDate": "6.18",
-      "link": ""
+      "link": "https://jn-growth.github.io/project-dashboard/page-planning.html"
     },
     {
       "title": "SEO/GEO 规划方案",
       "desc": "搜索引擎优化与 AI 搜索优化策略方案",
-      "delivered": "off",
+      "delivered": "on",
       "expectedDate": "6.19",
-      "link": ""
+      "link": "https://jn-growth.github.io/project-dashboard/seo-geo-plan.html"
     },
     {
       "title": "首页原型图",
