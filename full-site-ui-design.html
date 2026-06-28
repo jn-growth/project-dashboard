@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>德国捷牧教育集团（JM Bildung）中文官网｜全站 UI 视觉设计与页面原型</title>
+  <meta name="description" content="德国捷牧教育集团（JM Bildung）中文官方网站全站 UI 视觉设计、品牌规范与页面原型确认稿。">
+  <style>
+    :root {
+      --primary: #20516f;
+      --primary-dark: #12384f;
+      --primary-deep: #0b2638;
+      --primary-soft: #eaf1f5;
+      --accent: #b01616;
+      --accent-dark: #861010;
+      --text: #10202c;
+      --muted: #52616b;
+      --border: #dde5ea;
+      --surface: #fff;
+      --soft: #f5f8fa;
+      --dark: #071d2a;
+      --font: Inter, "HarmonyOS Sans SC", "Noto Sans SC", "Source Han Sans SC", "Microsoft YaHei", Arial, sans-serif;
+      --container: 1280px;
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --shadow-sm: 0 8px 24px rgba(20, 49, 67, .06);
+      --shadow-md: 0 20px 60px rgba(20, 49, 67, .10);
+      --section: clamp(72px, 8vw, 128px);
+      --motion-fast: 180ms ease;
+      --motion-base: 260ms ease;
+      --motion-slow: 680ms cubic-bezier(.22, 1, .36, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 108px; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--surface);
+      font: 400 16px/1.75 var(--font);
+      -webkit-font-smoothing: antialiased;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4 { margin: 0 0 .55em; color: var(--text); font-weight: 760; line-height: 1.15; letter-spacing: -.025em; }
+    h1 { max-width: 980px; font-size: clamp(2.8rem, 6vw, 5.2rem); }
+    h2 { font-size: clamp(2.1rem, 4vw, 3.4rem); }
+    h3 { font-size: clamp(1.28rem, 2vw, 1.7rem); }
+    h4 { font-size: 1.08rem; letter-spacing: -.01em; }
+    p { margin: 0 0 1.15em; }
+    ul, ol { margin-top: 0; padding-left: 1.25em; }
+    code { padding: .1em .35em; border-radius: 6px; background: var(--primary-soft); color: var(--primary-dark); font-family: Consolas, Monaco, monospace; font-size: .92em; }
+    .container { width: min(calc(100% - 96px), var(--container)); margin-inline: auto; }
+    .section { padding-block: var(--section); }
+    .section-soft { background: var(--soft); }
+    .section-dark { color: #d8e6ed; background: var(--primary-deep); }
+    .section-dark h2, .section-dark h3, .section-dark h4 { color: #fff; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      color: var(--primary);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { width: 30px; height: 2px; background: var(--accent); content: ""; }
+    .eyebrow.light { color: #dceaf1; }
+    .lead { max-width: 760px; color: var(--muted); font-size: clamp(1.05rem, 1.4vw, 1.2rem); }
+    .lead.light { color: #c8dce6; }
+    .site-header {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      border-bottom: 1px solid rgba(221,229,234,.75);
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(16px);
+    }
+    .header-inner { display: flex; min-height: 84px; align-items: center; justify-content: space-between; gap: 32px; }
+    .brand { display: inline-flex; align-items: center; gap: 16px; }
+    .brand img { width: 220px; height: auto; }
+    .brand small { display: block; color: var(--muted); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+    .nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 18px; color: #283c49; font-size: .9rem; font-weight: 700; }
+    .button {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 22px;
+      border: 1px solid var(--primary);
+      border-radius: var(--radius-sm);
+      color: #fff;
+      background: var(--primary);
+      font-weight: 760;
+      line-height: 1.2;
+    }
+    .button.accent { border-color: var(--accent); background: var(--accent); }
+    .button.outline { color: var(--primary); background: transparent; }
+    .button.light { border-color: rgba(255,255,255,.75); color: #fff; background: rgba(255,255,255,.08); }
+    .button.small { min-height: 42px; padding: 9px 15px; font-size: .86rem; }
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 84px);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      color: #fff;
+      background: var(--primary-deep);
+    }
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(5,25,38,.94) 0%, rgba(8,32,47,.78) 48%, rgba(9,36,53,.26) 84%),
+        url("../../wp-content/themes/jm-bildung/assets/images/office-3.jpg") center 45% / cover no-repeat;
+      content: "";
+    }
+    .hero .container { position: relative; z-index: 1; padding-block: 110px 130px; }
+    .hero h1 { color: #fff; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .hero-meta { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 0; margin-top: 68px; border-top: 1px solid rgba(255,255,255,.16); border-bottom: 1px solid rgba(255,255,255,.16); }
+    .hero-meta div { padding: 24px 22px; border-right: 1px solid rgba(255,255,255,.16); }
+    .hero-meta div:last-child { border-right: 0; }
+    .hero-meta strong { display: block; color: #fff; font-size: 1.65rem; line-height: 1.1; }
+    .hero-meta span { display: block; margin-top: 8px; color: #bcd0dc; font-size: .78rem; }
+    .toc-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; }
+    .toc-card {
+      min-height: 132px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .toc-card span { color: var(--accent); font-size: .78rem; font-weight: 850; letter-spacing: .12em; }
+    .toc-card strong { display: block; margin-top: 14px; color: var(--primary-dark); font-size: 1.1rem; }
+    .split { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(56px, 8vw, 108px); align-items: start; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 64px; margin-bottom: 58px; }
+    .section-heading .lead { margin-bottom: 0; }
+    .token-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 18px; }
+    .token { overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius-md); background: #fff; }
+    .swatch { height: 104px; }
+    .token-body { padding: 18px; }
+    .token-body strong { display: block; margin-bottom: 4px; }
+    .token-body span { color: var(--muted); font-size: .86rem; }
+    .type-scale { display: grid; gap: 16px; }
+    .type-row { display: grid; grid-template-columns: 160px minmax(0,1fr); gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .type-row span { color: var(--muted); font-size: .82rem; }
+    .component-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px; }
+    .component {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .component.dark { color: #d8e6ed; background: var(--primary-deep); }
+    .component.dark h3 { color: #fff; }
+    .motion-sample { display: grid; gap: 12px; }
+    .motion-sample span { display: block; padding: 13px 14px; border: 1px solid var(--border); border-radius: 10px; color: var(--primary-dark); background: #fff; font-size: .86rem; font-weight: 720; }
+    .sample-card { overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius-md); background: #fff; }
+    .sample-image { display: grid; aspect-ratio: 16/10; place-items: center; color: rgba(32,81,111,.35); background: var(--primary-soft); font-weight: 850; letter-spacing: .08em; }
+    .sample-card .body { padding: 22px; }
+    .data-strip { display: grid; grid-template-columns: repeat(6, 1fr); border: 1px solid var(--border); background: #fff; }
+    .data-strip div { padding: 26px 14px; text-align: center; border-right: 1px solid var(--border); }
+    .data-strip div:last-child { border-right: 0; }
+    .data-strip strong { display: block; color: var(--primary); font-size: clamp(1.35rem, 2vw, 1.9rem); line-height: 1.1; }
+    .data-strip span { display: block; margin-top: 8px; color: var(--muted); font-size: .78rem; }
+    .ia-map { display: grid; gap: 18px; }
+    .ia-row { display: grid; grid-template-columns: 230px minmax(0,1fr); gap: 20px; padding: 22px; border: 1px solid var(--border); border-radius: var(--radius-md); background: #fff; }
+    .ia-row strong { color: var(--primary-dark); }
+    .ia-row ul { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .ia-row li { padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: .82rem; }
+    .prototype-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+    .prototype-nav a { padding: 8px 12px; border: 1px solid var(--border); border-radius: 999px; color: var(--primary-dark); background: #fff; font-size: .82rem; font-weight: 720; }
+    .prototype { padding: 56px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: #fff; box-shadow: var(--shadow-sm); }
+    .prototype + .prototype { margin-top: 36px; }
+    .prototype-header { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 32px; align-items: start; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+    .page-tag { display: inline-flex; margin-bottom: 18px; padding: 6px 11px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); background: var(--soft); font-size: .76rem; font-weight: 780; }
+    .url { color: var(--primary); font-size: .84rem; font-weight: 750; white-space: nowrap; }
+    .wireframe { display: grid; gap: 16px; margin-top: 32px; }
+    .wire-row { display: grid; grid-template-columns: 180px minmax(0,1fr); gap: 18px; align-items: stretch; }
+    .wire-label { display: grid; place-items: center start; color: var(--primary-dark); font-size: .84rem; font-weight: 800; }
+    .wire-block {
+      min-height: 70px;
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--soft);
+    }
+    .wire-block.hero-block { min-height: 150px; color: #d8e6ed; background: linear-gradient(105deg, var(--primary-deep), var(--primary)); }
+    .wire-block.page-header-block { min-height: 118px; color: var(--text); background: linear-gradient(135deg, #f8fbfc, #edf4f7); }
+    .wire-block.dark-block { color: #d8e6ed; background: var(--primary-deep); }
+    .wire-block.media-block { min-height: 180px; background: linear-gradient(135deg, #d8e5eb, #f5f8fa); }
+    .module-list { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; margin-top: 18px; }
+    .module-list span { padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; background: #fff; color: var(--muted); font-size: .82rem; }
+    .notes { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin-top: 24px; }
+    .note { padding: 18px; border-left: 3px solid var(--accent); background: var(--soft); color: var(--muted); font-size: .9rem; }
+    .variant-grid { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 12px; margin-top: 20px; }
+    .variant { padding: 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: #fff; }
+    .variant strong { display: block; color: var(--primary-dark); font-size: .94rem; line-height: 1.35; }
+    .variant span { color: var(--muted); font-size: .78rem; }
+    .confirm-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
+    .confirm-card { padding: 24px; border: 1px solid rgba(255,255,255,.14); border-radius: var(--radius-md); background: rgba(255,255,255,.045); }
+    .confirm-card h3 { margin-bottom: 12px; }
+    .footer { padding: 54px 0; color: #b9cbd5; background: var(--dark); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 32px; }
+    .footer strong { color: #fff; }
+
+    @media (max-width: 1100px) {
+      .container { width: min(calc(100% - 48px), var(--container)); }
+      .nav { display: none; }
+      .toc-grid, .token-grid, .component-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .split, .prototype-header, .wire-row { grid-template-columns: 1fr; }
+      .data-strip { grid-template-columns: repeat(3,1fr); }
+      .data-strip div:nth-child(3n) { border-right: 0; }
+      .module-list, .notes { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .variant-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+
+    @media (max-width: 720px) {
+      .container { width: min(calc(100% - 32px), var(--container)); }
+      .header-inner { min-height: 74px; }
+      .brand img { width: 180px; }
+      .hero { min-height: auto; }
+      .hero .container { padding-block: 82px; }
+      .hero-meta, .toc-grid, .token-grid, .component-grid, .data-strip, .module-list, .notes, .variant-grid, .confirm-grid, .ia-row { grid-template-columns: 1fr; }
+      .hero-meta div, .data-strip div { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.16); }
+      .data-strip div { border-bottom-color: var(--border); }
+      .section-heading { display: block; }
+      .prototype { padding: 28px; border-radius: var(--radius-md); }
+      .url { white-space: normal; }
+      .footer-inner { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="返回设计稿顶部">
+        <img src="../../wp-content/themes/jm-bildung/assets/images/logo.png" alt="德国捷牧教育集团（JM Bildung）">
+        <small>Full Site UI Design</small>
+      </a>
+      <nav class="nav" aria-label="设计稿章节导航">
+        <a href="#brand">品牌规范</a>
+        <a href="#components">组件系统</a>
+        <a href="#architecture">信息架构</a>
+        <a href="#prototypes">页面原型</a>
+        <a class="button small" href="#confirmation">确认清单</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow light">JM Bildung Chinese Website</p>
+        <h1>全站 UI 视觉设计与页面原型确认稿</h1>
+        <p class="lead light">本稿基于已验收首页的结构、色彩、留白、组件与品牌气质延展，用于客户确认全站页面风格与模块结构。确认后可作为 WordPress 内页开发依据。</p>
+        <div class="hero-actions">
+          <a class="button accent" href="#prototypes">查看全站页面原型</a>
+          <a class="button light" href="#brand">查看品牌规范</a>
+        </div>
+        <div class="hero-meta" aria-label="设计交付摘要">
+          <div><strong>1</strong><span>独立 HTML 交付稿</span></div>
+          <div><strong>18+</strong><span>页面与模板原型</span></div>
+          <div><strong>UI</strong><span>品牌规范与组件系统</span></div>
+          <div><strong>WP</strong><span>后续主题开发依据</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Delivery Scope</p>
+            <h2>本次交付内容</h2>
+          </div>
+          <p class="lead">首页视觉已通过验收，因此本稿不重新定义首页方向，而是把首页设计沉淀为全站规范，并覆盖客户后续需要确认的所有核心页面。</p>
+        </div>
+        <div class="toc-grid">
+          <a class="toc-card" href="#brand"><span>01</span><strong>品牌视觉规范</strong><p>色彩、字体、间距、圆角、阴影、图片与页面节奏。</p></a>
+          <a class="toc-card" href="#components"><span>02</span><strong>通用组件系统</strong><p>Header、Footer、按钮、卡片、表单、数据条、CTA、FAQ。</p></a>
+          <a class="toc-card" href="#architecture"><span>03</span><strong>全站信息架构</strong><p>导航层级、URL、页面分组与模板复用关系。</p></a>
+          <a class="toc-card" href="#prototypes"><span>04</span><strong>全站页面原型</strong><p>首页使用全屏 Hero，内页使用轻量 Page Header。</p></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="brand" class="section">
+      <div class="container">
+        <div class="split">
+          <div>
+            <p class="eyebrow">Brand System</p>
+            <h2>品牌视觉规范</h2>
+            <p class="lead">整体应保持德国职业教育集团官方网站的克制、可靠与国际化气质。视觉上以深蓝建立信任，以少量红色形成关键行动提示，避免传统留学中介式的高饱和堆砌。</p>
+          </div>
+          <div class="data-strip" aria-label="首页已确认核心数据展示规范">
+            <div><strong>2008</strong><span>成立时间</span></div>
+            <div><strong>11,000+</strong><span>学员服务经验</span></div>
+            <div><strong>500+</strong><span>德国企业合作</span></div>
+            <div><strong>200+</strong><span>团队规模</span></div>
+            <div><strong>90%+</strong><span>就业率</span></div>
+            <div><strong>60+</strong><span>职业方向</span></div>
+          </div>
+        </div>
+
+        <div class="section" style="padding-bottom:0">
+          <h3>色彩系统</h3>
+          <div class="token-grid">
+            <div class="token"><div class="swatch" style="background:#20516f"></div><div class="token-body"><strong>Primary</strong><span>#20516F｜品牌主色、按钮、标题强调</span></div></div>
+            <div class="token"><div class="swatch" style="background:#12384f"></div><div class="token-body"><strong>Primary Dark</strong><span>#12384F｜导航悬停、深色按钮状态</span></div></div>
+            <div class="token"><div class="swatch" style="background:#0b2638"></div><div class="token-body"><strong>Primary Deep</strong><span>#0B2638｜深色区块、Footer、案例区</span></div></div>
+            <div class="token"><div class="swatch" style="background:#eaf1f5"></div><div class="token-body"><strong>Primary Soft</strong><span>#EAF1F5｜浅色背景、占位图、标签</span></div></div>
+            <div class="token"><div class="swatch" style="background:#b01616"></div><div class="token-body"><strong>Accent</strong><span>#B01616｜关键 CTA、小面积强调</span></div></div>
+            <div class="token"><div class="swatch" style="background:#10202c"></div><div class="token-body"><strong>Text</strong><span>#10202C｜正文主文本</span></div></div>
+            <div class="token"><div class="swatch" style="background:#52616b"></div><div class="token-body"><strong>Muted</strong><span>#52616B｜说明、日期、辅助信息</span></div></div>
+            <div class="token"><div class="swatch" style="background:#f5f8fa"></div><div class="token-body"><strong>Surface Soft</strong><span>#F5F8FA｜浅灰分区背景</span></div></div>
+          </div>
+        </div>
+
+        <div class="section" style="padding-bottom:0">
+          <h3>字体与层级</h3>
+          <div class="type-scale">
+            <div class="type-row"><span>H1 / 首屏标题</span><strong style="font-size:clamp(2.4rem,5vw,4.5rem);line-height:1.08">德国职业教育，让学历与就业同步发生</strong></div>
+            <div class="type-row"><span>H2 / 模块标题</span><strong style="font-size:clamp(2rem,3.5vw,3rem);line-height:1.12">为什么选择捷牧教育</strong></div>
+            <div class="type-row"><span>H3 / 卡片标题</span><strong style="font-size:1.45rem">德国双元制职业培训</strong></div>
+            <div class="type-row"><span>Body / 正文</span><p>正文使用 16px / 1.75 的舒展行高，保持专业说明内容的可读性。移动端正文不低于 16px。</p></div>
+            <div class="type-row"><span>Label / 眉题</span><p class="eyebrow">Our Strengths</p></div>
+          </div>
+        </div>
+
+        <div class="section" style="padding-bottom:0">
+          <h3>页面节奏与图像规范</h3>
+          <div class="notes">
+            <div class="note">桌面端区块上下间距保持 96–160px，平板约 72–112px，移动端约 56–88px。</div>
+            <div class="note">图片优先使用客户真实德国办公室、院校、团队和授权场景；缺失时使用本地占位，不调用远程随机图片。</div>
+            <div class="note">圆角以 10px、18px、28px 为主；阴影克制，避免浓重黑影、霓虹和玻璃拟态滥用。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="components" class="section section-soft">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">UI Components</p>
+            <h2>全站组件系统</h2>
+          </div>
+          <p class="lead">组件延续首页已确认的按钮、卡片、深色区块、数据条、资讯卡片与 CTA 语言，并加入克制的滚动进入、数字递增、卡片浮起、图片轻缩放等微动效。</p>
+        </div>
+        <div class="component-grid">
+          <div class="component">
+            <h3>按钮 Button</h3>
+            <p>主按钮用于普通跳转，红色按钮仅用于关键转化。</p>
+            <p><a class="button" href="#">了解项目</a></p>
+            <p><a class="button accent" href="#">立即咨询</a></p>
+            <p><a class="button outline" href="#">查看详情</a></p>
+          </div>
+          <div class="component">
+            <h3>资讯卡片</h3>
+            <div class="sample-card">
+              <div class="sample-image">JM Bildung</div>
+              <div class="body">
+                <small style="color:var(--muted)">2026.06.26</small>
+                <h4>德国职业教育项目进展</h4>
+                <p style="color:var(--muted)">用于新闻、动态、项目进展和政策解读。</p>
+              </div>
+            </div>
+          </div>
+          <div class="component dark">
+            <h3>深色案例卡片</h3>
+            <p>用于学员故事、品牌背书、重点 CTA 等高信任区块。</p>
+            <div style="padding:18px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(255,255,255,.045)">
+              <strong style="color:#fff">弋同学 · 西餐厨师</strong>
+              <p style="margin:8px 0 0;color:#c6d6de">人物图片待客户授权，案例内容需客户确认后发布。</p>
+            </div>
+          </div>
+          <div class="component">
+            <h3>数据模块</h3>
+            <p>大数字、少说明，避免厚重卡片堆砌。</p>
+            <div class="data-strip" style="grid-template-columns:repeat(2,1fr)">
+              <div><strong>500+</strong><span>合作企业</span></div>
+              <div><strong>60+</strong><span>职业方向</span></div>
+            </div>
+          </div>
+          <div class="component">
+            <h3>表单组件</h3>
+            <p>联系页使用简洁字段，不主动扩展复杂 CRM 能力。</p>
+            <div style="display:grid;gap:12px">
+              <div style="padding:13px 14px;border:1px solid var(--border);border-radius:10px;color:var(--muted)">姓名</div>
+              <div style="padding:13px 14px;border:1px solid var(--border);border-radius:10px;color:var(--muted)">电话 / 微信</div>
+              <div style="padding:13px 14px;border:1px solid var(--border);border-radius:10px;color:var(--muted)">意向项目</div>
+            </div>
+          </div>
+          <div class="component">
+            <h3>FAQ 手风琴</h3>
+            <p>FAQ 页面与项目页底部复用，支持 FAQPage Schema。</p>
+            <div style="display:grid;gap:10px">
+              <div style="padding:15px;border:1px solid var(--border);border-radius:10px;background:#fff">什么是德国双元制？</div>
+              <div style="padding:15px;border:1px solid var(--border);border-radius:10px;background:#fff">申请需要什么德语水平？</div>
+            </div>
+          </div>
+          <div class="component">
+            <h3>Motion 动效系统</h3>
+            <p>动效用于增强品质与层级，不做炫技，不影响阅读。</p>
+            <div class="motion-sample">
+              <span>滚动淡入 / 上移淡入</span>
+              <span>数据数字递增</span>
+              <span>卡片轻微浮起</span>
+              <span>支持 prefers-reduced-motion</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="architecture" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Information Architecture</p>
+            <h2>全站信息架构</h2>
+          </div>
+          <p class="lead">URL 采用清晰英文路径；导航结构延续当前主题已开发的 Header 方向，支持下拉与移动端折叠菜单。</p>
+        </div>
+        <div class="ia-map">
+          <div class="ia-row"><strong>首页</strong><ul><li>/</li><li>Hero</li><li>核心数据</li><li>最新资讯</li><li>CTA</li></ul></div>
+          <div class="ia-row"><strong>捷牧双元制</strong><ul><li>/dual-study/</li><li>/dual-study/osnabrueck/</li><li>/dual-study/berlin-brandenburg/</li><li>/dual-study/rhein-angel/</li><li>/dual-study/hotel-management/</li><li>/dual-study/future-craft/</li></ul></div>
+          <div class="ia-row"><strong>就业德语</strong><ul><li>/german-course/</li><li>A1–B2</li><li>就业场景</li><li>班型</li></ul></div>
+          <div class="ia-row"><strong>留德项目</strong><ul><li>/programme/</li><li>/high-school/</li><li>/foundation/</li><li>/study-tour/</li><li>/cooperation/</li></ul></div>
+          <div class="ia-row"><strong>旗下院校</strong><ul><li>/institutions/</li><li>院校简介</li><li>资质</li><li>校园环境</li></ul></div>
+          <div class="ia-row"><strong>内容与信任</strong><ul><li>/success-stories/</li><li>/partners/</li><li>/about/</li><li>/team/</li><li>/honors/</li></ul></div>
+          <div class="ia-row"><strong>资讯与转化</strong><ul><li>/news/</li><li>/highlights/</li><li>/faq/</li><li>/contact/</li><li>Search</li><li>404</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="prototypes" class="section section-soft">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Page Prototypes</p>
+            <h2>全站页面原型设计</h2>
+          </div>
+          <p class="lead">以下为客户确认用的页面结构原型。每个页面均包含核心模块、视觉重点和内容维护方式提示；未经确认的客户资料只标注为待确认，不写成事实背书。</p>
+        </div>
+        <div class="prototype-nav" aria-label="页面原型索引">
+          <a href="#p-home">首页</a>
+          <a href="#p-dual">双元制</a>
+          <a href="#p-special">特招项目</a>
+          <a href="#p-german">就业德语</a>
+          <a href="#p-programme">留德项目</a>
+          <a href="#p-institutions">旗下院校</a>
+          <a href="#p-stories">学员案例</a>
+          <a href="#p-partners">企业合作</a>
+          <a href="#p-about">关于捷牧</a>
+          <a href="#p-team">团队</a>
+          <a href="#p-honors">荣誉</a>
+          <a href="#p-news">资讯</a>
+          <a href="#p-faq">FAQ</a>
+          <a href="#p-contact">联系</a>
+          <a href="#p-utility">功能页</a>
+        </div>
+
+        <article id="p-home" class="prototype">
+          <div class="prototype-header">
+          <div><span class="page-tag">已验收：首页延展标准</span><h3>首页 Home</h3><p class="lead">首页作为全站视觉母版，保留当前已验收结构：全屏大图 Hero、核心数据、为什么选择捷牧教育、关于、双元制、案例、合作网络、最新资讯、底部 CTA，并加入微动效增强品质。</p></div>
+            <div class="url">/</div>
+          </div>
+          <div class="wireframe">
+            <div class="wire-row"><div class="wire-label">首页 Hero</div><div class="wire-block hero-block">仅首页使用全屏德国办公室/教育场景大图；主标题强调“德国职业教育”“学历与就业同步发生”；1 个主 CTA + 1 个次 CTA。</div></div>
+            <div class="wire-row"><div class="wire-label">数据</div><div class="wire-block">六列品牌核心数据，移动端两列。</div></div>
+            <div class="wire-row"><div class="wire-label">内容模块</div><div class="wire-block"><div class="module-list"><span>为什么选择捷牧教育</span><span>关于捷牧教育</span><span>德国双元制核心项目</span><span>学员案例</span><span>德国合作网络</span><span>最新资讯</span></div></div></div>
+            <div class="wire-row"><div class="wire-label">CTA</div><div class="wire-block dark-block">底部 CTA 只保留按钮，不显示联系电话辅助信息。</div></div>
+          </div>
+        </article>
+
+        <article id="p-dual" class="prototype">
+          <div class="prototype-header">
+            <div><span class="page-tag">核心业务页</span><h3>德国双元制总览页</h3><p class="lead">作为最重要的业务承接页，用“一分钟看懂 + 项目解释 + 数据事实 + 行业方向 + 流程 + FAQ”建立清晰认知。</p></div>
+            <div class="url">/dual-study/</div>
+          </div>
+          <div class="wireframe">
+            <div class="wire-row"><div class="wire-label">Page Header</div><div class="wire-block page-header-block">内页不使用满屏 Hero；采用中等高度浅色 Page Header，包含面包屑、页面标题、摘要、可选 CTA，并在下方展示关键事实条。</div></div>
+            <div class="wire-row"><div class="wire-label">一分钟看懂</div><div class="wire-block">四项摘要卡：带薪学习、企业实践、职业资格、长期就业路径。</div></div>
+            <div class="wire-row"><div class="wire-label">项目介绍</div><div class="wire-block media-block">左文右图：解释双元制是什么、捷牧如何服务、学习/企业实践比例。</div></div>
+            <div class="wire-row"><div class="wire-label">主体模块</div><div class="wire-block"><div class="module-list"><span>核心数据</span><span>热门行业</span><span>服务流程</span><span>服务优势</span><span>招生条件</span><span>特色项目入口</span><span>学员案例</span><span>FAQ</span><span>CTA</span></div></div></div>
+          </div>
+          <div class="notes">
+            <div class="note">薪资 700–1200 欧元/月、约 95% 转正等数据需保留待确认口径。</div>
+            <div class="note">行业信息可做横向 Tab 或手风琴，移动端改为折叠卡片。</div>
+            <div class="note">Schema 建议使用 Course / FAQPage / BreadcrumbList。</div>
+          </div>
+        </article>
+
+        <article id="p-special" class="prototype">
+          <div class="prototype-header">
+            <div><span class="page-tag">模板型详情页</span><h3>双元制特招项目详情页模板</h3><p class="lead">五个特招项目使用统一页面模板，保留各项目背景、合作机构、岗位方向、申请条件与媒体/资质信息的差异化内容。</p></div>
+            <div class="url">/dual-study/{slug}/</div>
+          </div>
+          <div class="variant-grid">
+            <div class="variant"><strong>奥斯纳布吕克特招项目</strong><span>/osnabrueck/</span></div>
+            <div class="variant"><strong>柏林·勃兰登堡特招项目</strong><span>/berlin-brandenburg/</span></div>
+            <div class="variant"><strong>莱茵天使公益奖学金计划</strong><span>/rhein-angel/</span></div>
+            <div class="variant"><strong>五星级酒店管理项目</strong><span>/hotel-management/</span></div>
+            <div class="variant"><strong>未来工匠·工科直聘项目</strong><span>/future-craft/</span></div>
+          </div>
+          <div class="wireframe">
+            <div class="wire-row"><div class="wire-label">项目 Header</div><div class="wire-block page-header-block">项目名称 + 一句话价值主张 + 项目核心摘要；使用摘要卡或节点图，不重复首页式大图 Hero。</div></div>
+            <div class="wire-row"><div class="wire-label">核心摘要</div><div class="wire-block">岗位数量、德语要求、合作背景、适合人群、申请阶段。</div></div>
+            <div class="wire-row"><div class="wire-label">内容结构</div><div class="wire-block"><div class="module-list"><span>项目背景</span><span>合作机构</span><span>核心亮点</span><span>岗位方向</span><span>申请条件</span><span>申请流程</span><span>媒体或资质背书</span><span>相关案例</span><span>FAQ</span></div></div></div>
+          </div>
+          <div class="notes">
+            <div class="note">政府合作、媒体报道、具体合作单位必须以客户确认资料为准。</div>
+            <div class="note">未授权 Logo 不展示；可先使用文字型机构信息区。</div>
+            <div class="note">不同项目共用模板，减少后续开发和维护成本。</div>
+          </div>
+        </article>
+
+        <article id="p-german" class="prototype">
+          <div class="prototype-header">
+            <div><span class="page-tag">核心业务页</span><h3>就业德语页</h3><p class="lead">突出“为德国职业场景服务的德语学习”，区别于普通语言培训页面，强化从 A1 到 B2 的路径和就业场景应用。</p></div>
+            <div class="url">/german-course/</div>
+          </div>
+          <div class="wireframe">
+            <div class="wire-row"><div class="wire-label">Page Header</div><div class="wire-block page-header-block">就业德语定位 + 课程路径 + 咨询 CTA；保持轻量标题区。</div></div>
+            <div class="wire-row"><div class="wire-label">课程体系</div><div class="wire-block">A1 / A2 / B1 / B2 分级横向路径，展示目标、学习结果和适合阶段。</div></div>
+            <div class="wire-row"><div class="wire-label">教学特色</div><div class="wire-block"><div class="module-list"><span>中德团队共研</span><span>就业场景训练</span><span>面试表达</span><span>签证沟通</span><span>企业入职语言</span><span>学习督导</span></div></div></div>
+            <div class="wire-row"><div class="wire-label">转化模块</div><div class="wire-block dark-block">德语水平评估 CTA + FAQ。</div></div>
+          </div>
+        </article>
+
+        <article id="p-programme" class="prototype">
+          <div class="prototype-header">
+            <div><span class="page-tag">留德项目体系</span><h3>留德项目总览与子项目页</h3><p class="lead">留德项目统一使用“项目矩阵 + 人群区分 + 服务流程”的视觉语言，避免首页堆入口，放到独立栏目承接。</p></div>
+            <div class="url">/programme/</div>
+          </div>
+          <div class="variant-grid">
+            <div class="variant"><strong>德国高中联盟</strong><span>/high-school/</span></div>
+            <div class="variant"><strong>德国大学预科</strong><span>/foundation/</span></div>
+            <div class="variant"><strong>游学研学</strong><span>/study-tour/</span></div>
+            <div class="variant"><strong>中德合作办学</strong><span>/cooperation/</span></div>
+            <div class="variant"><strong>项目总览</strong><span>/programme/</span></div>
+          </div>
+          <div class="wireframe">
+            <div class="wire-row"><div class="wire-label">Page Header</div><div class="wire-block page-header-block">按年龄/阶段说明项目选择路径，不做满屏首屏。</div></div>
+            <div class="wire-row"><div class="wire-label">项目矩阵</div><div class="wire-block">四个项目大卡片，显示适合人群、周期、核心收益与详情入口。</div></div>
+            <div class="wire-row"><div class="wire-label">子页模板</div><div class="wire-block"><div class="module-list"><span>项目简介</span><span>适合人群</span><span>申请条件</span><span>服务流程</span><span>课程/活动安排</span><span>相关院校</span><span>FAQ</span><span>CTA</span></div></div></div>
+          </div>
+        </article>
+
+        <article id="p-institutions" class="prototype">
+          <div class="prototype-header">
+            <div><span class="page-tag">品牌信任页</span><h3>旗下院校页</h3><p class="lead">突出院校实体、办学资质、课程方向与校园环境。视觉上使用大图、院校分区和资质信息，不做普通 Logo 列表。</p></div>
+            <div class="url">/institutions/</div>
+          </div>
+          <div class="wireframe">
+            <div class="wire-row"><div class="wire-label">Page Header</div><div class="wire-block page-header-block">院校体系标题 + 摘要；院校大图放入正文重点模块，不压在首屏。</div></div>
+            <div class="wire-row"><div class="wire-label">院校展示</div><div class="wire-block"><div class="module-list"><span>莱茵公益教育中心</span><span>莱茵护理与健康学院</span><span>杜塞尔多夫预科学院</span></div></div></div>
+            <div class="wire-row"><div class="wire-label">详情区块</div><div class="wire-block media-block">每所院校：简介、资质、课程方向、地理位置、相关项目。</div></div>
+          </div>
+          <div class="notes">
+            <div class="note">“中德两国政府认可”等表述须与客户最终授权材料一致。</div>
+            <div class="note">资质证书图片需客户提供后再展示。</div>
+            <div class="note">院校 Logo 如未授权则先用文字标题。</div>
+          </div>
+        </article>
+
+        <article id="p-stories" class="prototype">
+          <div class="prototype-header">
+            <div><span class="page-tag">内容与转化页</span><h3>学员案例列表与详情页</h3><p class="lead">案例页强调真实、授权和结构化叙事。无授权照片时使用本地中性占位，并明确标注待授权。</p></div>
+            <div class="url">/success-stories/ 与 /success-stories/{slug}.html</div>
+          </div>
+          <div class="wireframe">
+            <div class="wire-row"><div class="wire-label">列表页</div><div class="wire-block">筛选栏：项目类型、岗位方向、城市、学历背景；卡片展示匿名化姓名、岗位、城市、摘要。</div></div>
+            <div class="wire-row"><div class="wire-label">详情页</div><div class="wire-block"><div class="module-list"><span>基本信息</span><span>背景</span><span>选择原因</span><span>德语学习</span><span>申请过程</span><span>企业面试</span><span>在德学习/工作</span><span>学员自述</span><span>时间线</span></div></div></div>
+            <div class="wire-row"><div class="wire-label">视觉</div><div class="wire-block dark-block">深色案例 Hero + 时间线 + 相关项目 CTA。</div></div>
+          </div>
+        </article>
+
+        <article id="p-partners" class="prototype">
+          <div class="prototype-header">
+            <div><span class="page-tag">合作网络页</span><h3>企业合作 / 德国合作网络页</h3><p class="lead">展示德国企业合作网络、行业覆盖和合作模式。客户确认前不展示具体企业 Logo 或未经授权合作细节。</p></div>
+            <div class="url">/partners/</div>
+          </div>
+          <div class="wireframe">
+            <div class="wire-row"><div class="wire-label">Page Header</div><div class="wire-block page-header-block">标题说明合作网络定位；德国地图作为首个正文视觉模块。</div></div>
+            <div class="wire-row"><div class="wire-label">合作模式</div><div class="wire-block"><div class="module-list"><span>双元制培训合作</span><span>岗位匹配</span><span>人才定向输送</span><span>政府/经促机构合作</span><span>行业覆盖</span><span>合作咨询 CTA</span></div></div></div>
+            <div class="wire-row"><div class="wire-label">Logo 墙</div><div class="wire-block">仅后台发布并确认授权后展示；默认显示“合作名单待客户确认”。</div></div>
+          </div>
+        </article>
+
+        <article id="p-about" class="prototype">
+          <div class="prototype-header">
+            <div><span class="page-tag">品牌实体页</span><h3>关于捷牧页</h3><p class="lead">作为 SEO/GEO 的品牌实体核心页，需要完整说明德国捷牧教育集团（JM Bildung）的定位、历史、使命、办事处与业务体系。</p></div>
+            <div class="url">/about/</div>
+          </div>
+          <div class="wireframe">
+            <div class="wire-row"><div class="wire-label">品牌 Header</div><div class="wire-block page-header-block">品牌定位“中德教育的纽带” + 德国职业教育集团官方网站；使用文字叙事型标题区。</div></div>
+            <div class="wire-row"><div class="wire-label">主体</div><div class="wire-block"><div class="module-list"><span>企业简介</span><span>发展历程</span><span>使命愿景</span><span>核心价值观</span><span>全球办事处</span><span>团队入口</span><span>荣誉资质入口</span><span>CTA</span></div></div></div>
+            <div class="wire-row"><div class="wire-label">历史名称</div><div class="wire-block">GEM / GEM Group / LMT 仅出现在发展历程或历史背景中，不作为当前主品牌。</div></div>
+          </div>
+        </article>
+
+        <article id="p-team" class="prototype">
+          <div class="prototype-header">
+            <div><span class="page-tag">团队页</span><h3>团队介绍页</h3><p class="lead">展示德国本土团队与中国服务团队协作能力。成员姓名、照片、职务和简介必须由客户确认后发布。</p></div>
+            <div class="url">/team/</div>
+          </div>
+          <div class="wireframe">
+            <div class="wire-row"><div class="wire-label">Page Header</div><div class="wire-block page-header-block">团队定位 + 德国/中国协作服务体系。</div></div>
+            <div class="wire-row"><div class="wire-label">团队结构</div><div class="wire-block"><div class="module-list"><span>创始人/管理层</span><span>德国申请导师</span><span>德语教学团队</span><span>境外服务团队</span><span>中国顾问团队</span><span>后台维护 CPT</span></div></div></div>
+            <div class="wire-row"><div class="wire-label">人物卡片</div><div class="wire-block">头像、姓名、职位、简介；未授权时使用中性占位图。</div></div>
+          </div>
+        </article>
+
+        <article id="p-honors" class="prototype">
+          <div class="prototype-header">
+            <div><span class="page-tag">资质背书页</span><h3>荣誉资质页</h3><p class="lead">用于展示资质、证书、媒体报道和重要合作背书。所有图片和证书信息必须客户确认后公开。</p></div>
+            <div class="url">/honors/</div>
+          </div>
+          <div class="wireframe">
+            <div class="wire-row"><div class="wire-label">Page Header</div><div class="wire-block page-header-block">资质与品牌信任主题。</div></div>
+            <div class="wire-row"><div class="wire-label">分类</div><div class="wire-block"><div class="module-list"><span>办学/质量资质</span><span>行业协会</span><span>政府合作</span><span>媒体报道</span><span>院校资质</span><span>待确认资料</span></div></div></div>
+            <div class="wire-row"><div class="wire-label">展示</div><div class="wire-block">证书卡片 + 详情弹层或详情页；未提供图片时先不展示证书缩略图。</div></div>
+          </div>
+        </article>
+
+        <article id="p-news" class="prototype">
+          <div class="prototype-header">
+            <div><span class="page-tag">资讯系统</span><h3>捷牧资讯、捷牧要闻与文章详情页</h3><p class="lead">资讯体系使用 WordPress 原生文章或后续 CPT，支持分类、分页、搜索、详情页、相关文章和结构化数据。</p></div>
+            <div class="url">/news/ /highlights/ /news/{slug}.html</div>
+          </div>
+          <div class="wireframe">
+            <div class="wire-row"><div class="wire-label">列表页</div><div class="wire-block">顶部 Page Header + 分类筛选 + 三列资讯卡片 + 分页。</div></div>
+            <div class="wire-row"><div class="wire-label">要闻页</div><div class="wire-block">更强调重要公告、行业政策、项目节点；视觉可使用大卡 + 小卡组合。</div></div>
+            <div class="wire-row"><div class="wire-label">详情页</div><div class="wire-block"><div class="module-list"><span>面包屑</span><span>标题</span><span>日期</span><span>分类</span><span>正文</span><span>上一篇/下一篇</span><span>相关文章</span><span>底部 CTA</span><span>Article Schema</span></div></div></div>
+          </div>
+        </article>
+
+        <article id="p-faq" class="prototype">
+          <div class="prototype-header">
+            <div><span class="page-tag">FAQ / GEO 友好页</span><h3>常见问题页</h3><p class="lead">以直接问答形式服务用户和 AI 检索，按项目类别组织，页面可输出 FAQPage Schema。</p></div>
+            <div class="url">/faq/</div>
+          </div>
+          <div class="wireframe">
+            <div class="wire-row"><div class="wire-label">Page Header</div><div class="wire-block page-header-block">常见问题总览 + 搜索/分类入口。</div></div>
+            <div class="wire-row"><div class="wire-label">分类</div><div class="wire-block"><div class="module-list"><span>双元制</span><span>就业德语</span><span>签证与入境</span><span>在德生活</span><span>费用与薪资</span><span>申请条件</span></div></div></div>
+            <div class="wire-row"><div class="wire-label">问答</div><div class="wire-block">手风琴展示；问题和答案必须存在于页面可见内容中。</div></div>
+          </div>
+        </article>
+
+        <article id="p-contact" class="prototype">
+          <div class="prototype-header">
+            <div><span class="page-tag">咨询转化页</span><h3>联系我们页</h3><p class="lead">联系页展示德国总部和中国办事处信息、二维码和咨询入口。如当前技术方案不包含原生表单，表单需作为后续确认项。</p></div>
+            <div class="url">/contact/</div>
+          </div>
+          <div class="wireframe">
+            <div class="wire-row"><div class="wire-label">转化 Header</div><div class="wire-block page-header-block">获取专属德国发展方案；联系页可使用更强 CTA，但仍不做首页式满屏 Hero。</div></div>
+            <div class="wire-row"><div class="wire-label">咨询区</div><div class="wire-block">左侧联系方式与二维码，右侧咨询表单或客服系统入口。</div></div>
+            <div class="wire-row"><div class="wire-label">办事处</div><div class="wire-block"><div class="module-list"><span>德国总部</span><span>北京</span><span>上海</span><span>长沙</span><span>地图/静态位置</span><span>工作时间待确认</span></div></div></div>
+          </div>
+          <div class="notes">
+            <div class="note">德国总部电话存在两个口径，需客户确认。</div>
+            <div class="note">长沙地址和电话存在差异，需客户确认。</div>
+            <div class="note">客服系统最终选型确认后再嵌入。</div>
+          </div>
+        </article>
+
+        <article id="p-utility" class="prototype">
+          <div class="prototype-header">
+            <div><span class="page-tag">功能与状态页</span><h3>搜索结果页与 404 页面</h3><p class="lead">功能页保持品牌调性，不出现空白或系统默认样式。搜索页不索引，404 页面提供返回首页和联系入口。</p></div>
+            <div class="url">/?s=keyword 与 404</div>
+          </div>
+          <div class="wireframe">
+            <div class="wire-row"><div class="wire-label">搜索结果</div><div class="wire-block">搜索关键词标题、结果列表、分页、无结果状态、搜索表单；Meta robots 使用 noindex,follow。</div></div>
+            <div class="wire-row"><div class="wire-label">404</div><div class="wire-block dark-block">大号 404 + 简短说明 + 返回首页 + 联系我们按钮。</div></div>
+            <div class="wire-row"><div class="wire-label">空状态</div><div class="wire-block">所有列表页无内容时使用明确文案，不伪造新闻、案例或合作信息。</div></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="confirmation" class="section section-dark">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow light">Client Confirmation</p>
+            <h2>客户确认清单</h2>
+          </div>
+          <p class="lead light">以下内容影响最终页面文案、图片和背书展示。客户确认前，设计与开发均应保持可编辑、可替换、不过度承诺。</p>
+        </div>
+        <div class="confirm-grid">
+          <div class="confirm-card"><h3>业务数据口径</h3><p>办事处最终数量 5/7 家、团队人数、90%+ 就业率、约 95% 转正率的统计范围。</p></div>
+          <div class="confirm-card"><h3>授权素材</h3><p>合作企业 Logo、院校/资质证书图片、学员照片、学员评价和真实案例公开授权。</p></div>
+          <div class="confirm-card"><h3>联系方式</h3><p>德国总部与中国办事处最新地址、电话、邮箱、工作时间、二维码和客服系统选型。</p></div>
+          <div class="confirm-card"><h3>上线信息</h3><p>中文站正式域名、SEO 标题描述最终口径、是否接入第三方 SEO/客服/统计插件。</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>德国捷牧教育集团（JM Bildung）中文官方网站</strong>
+        <p>全站 UI 视觉设计与页面原型确认稿｜基于已验收首页风格延展</p>
+      </div>
+      <div>
+        <p>版本：V1.0<br>日期：2026-06-26<br>交付形式：单文件 HTML</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
