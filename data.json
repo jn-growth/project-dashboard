@@ -50,12 +50,12 @@
       "tasks": [
         {
           "name": "全站页面原型设计",
-          "status": "off",
+          "status": "on",
           "date": "6.22-6.24"
         },
         {
           "name": "UI 视觉设计（品牌规范+页面设计）",
-          "status": "off",
+          "status": "on",
           "date": "6.24-6.28"
         }
       ]
@@ -264,23 +264,23 @@
     {
       "title": "全站原型图",
       "desc": "所有页面的交互原型设计",
-      "delivered": "off",
+      "delivered": "on",
       "expectedDate": "6.24",
       "link": ""
     },
     {
       "title": "UI 设计稿",
       "desc": "全站高保真 UI 视觉设计稿",
-      "delivered": "off",
+      "delivered": "on",
       "expectedDate": "6.28",
       "link": ""
     },
     {
       "title": "品牌视觉规范",
       "desc": "配色、字体、组件库等品牌设计标准",
-      "delivered": "off",
+      "delivered": "on",
       "expectedDate": "6.28",
-      "link": ""
+      "link": "https://jn-growth.github.io/project-dashboard/full-site-ui-design.html"
     },
     {
       "title": "前端开发包",
