@@ -69,12 +69,12 @@
       "tasks": [
         {
           "name": "前端开发 + 响应式适配",
-          "status": "off",
+          "status": "on",
           "date": "6.29-7.3"
         },
         {
           "name": "后台管理系统建设",
-          "status": "off",
+          "status": "on",
           "date": "6.29-7.3"
         }
       ]
@@ -285,16 +285,16 @@
     {
       "title": "前端开发包",
       "desc": "前端页面代码与资源文件",
-      "delivered": "off",
+      "delivered": "on",
       "expectedDate": "7.3",
-      "link": ""
+      "link": "http://115.190.247.212/"
     },
     {
       "title": "后台管理系统",
       "desc": "CMS 内容管理后台系统",
-      "delivered": "off",
+      "delivered": "on",
       "expectedDate": "7.3",
-      "link": ""
+      "link": "http://115.190.247.212/admin"
     },
     {
       "title": "测试报告",
