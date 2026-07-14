@@ -88,17 +88,17 @@
       "tasks": [
         {
           "name": "内容填充 + SEO/GEO 部署",
-          "status": "off",
+          "status": "on",
           "date": "7.4-7.8"
         },
         {
           "name": "测试验收 + 速度/安全优化",
-          "status": "off",
+          "status": "on",
           "date": "7.9-7.12"
         },
         {
           "name": "服务器部署 + 域名解析 + 正式上线",
-          "status": "off",
+          "status": "on",
           "date": "7.13-7.15"
         }
       ]
@@ -287,14 +287,14 @@
       "desc": "前端页面代码与资源文件",
       "delivered": "on",
       "expectedDate": "7.3",
-      "link": "http://115.190.247.212/"
+      "link": "https://www.jm-bildung.com"
     },
     {
       "title": "后台管理系统",
       "desc": "CMS 内容管理后台系统",
       "delivered": "on",
       "expectedDate": "7.3",
-      "link": "http://115.190.247.212/admin"
+      "link": "https://www.jm-bildung.com/wp-admin/"
     },
     {
       "title": "测试报告",
